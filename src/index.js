@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import {HashRouter as Router, Switch} from 'react-router-dom'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+	<Router>
+		<Switch>
+			<App />
+		</Switch>
+	</Router>,
+
+
   document.getElementById('root')
 );
 
