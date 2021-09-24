@@ -2,15 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import {HashRouter as Router, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Switch} from 'react-router-dom'
+import { ChakraProvider} from '@chakra-ui/react'
+
+
 
 ReactDOM.render(
-	<Router>
-		<Switch>
-			<App />
-		</Switch>
-	</Router>,
-
+	<ChakraProvider>
+		<Router>
+			<Switch>
+				<App />
+			</Switch>
+		</Router>
+	</ChakraProvider>,
 
   document.getElementById('root')
 );
