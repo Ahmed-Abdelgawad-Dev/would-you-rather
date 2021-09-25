@@ -1,10 +1,7 @@
-/*ol {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    text-align: center;*/
-/*    flex-wrap: wrap;*/
-/*    list-style-type: none;*/
-/*    gap: 50px;*/
-
-/*}*/
+.app-address {
+    padding:10px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    background-color: #0066cc
+}

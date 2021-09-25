@@ -4,14 +4,21 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router, Switch} from 'react-router-dom'
 import { ChakraProvider} from '@chakra-ui/react'
+import { Provider as StoreProvider } from 'react-redux'
+import middleware from '../src/store/middleware'
+import reducer from'./store/reducers'
+import {createStore} from "redux";
 
 
+const store = createStore(reducer, middleware)
 
 ReactDOM.render(
 	<ChakraProvider>
 		<Router>
 			<Switch>
-				<App />
+				<StoreProvider store={store}>
+					<App />
+				</StoreProvider>
 			</Switch>
 		</Router>
 	</ChakraProvider>,

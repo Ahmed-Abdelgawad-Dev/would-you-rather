@@ -2,7 +2,7 @@ import {_getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer} from './_D
 
 // Fetching users with Questions in one row
 export const getUsersAndQuestions = () => {
-	return new Promise.all([_getUsers(), _getQuestions()])
+	return Promise.all([_getUsers(), _getQuestions()])
 		.then(([users, questions])=> ({users, questions})
 		)
 }
