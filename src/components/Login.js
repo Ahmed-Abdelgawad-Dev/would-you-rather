@@ -1,7 +1,17 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { Redirect, withRouter } from 'react-router-dom'
 
-const Login = () => {
+
+const Login = ({users}) => {
 	return(
-		<div>Login</div>
+		<div>
+			<hi>Welcome to Would You Rather Game</hi>
+		</div>
 	)
 }
-export default Login;
+
+const mapStateToProps = ({users}) => {
+	return {users}
+}
+export default withRouter(connect(mapStateToProps)(Login)) ;

@@ -1,4 +1,12 @@
+export const CLEAR_AUTHED_USER = 'CLEAR_AUTHED_USER'
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'
+
+
+
+export const clearAuthedUser = () => {
+	return {type: CLEAR_AUTHED_USER,}
+}
+
 
 export const setAuthedUser = (id) => {
 	return {
@@ -6,3 +14,4 @@ export const setAuthedUser = (id) => {
 		id
 	}
 }
+
