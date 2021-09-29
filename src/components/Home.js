@@ -19,8 +19,8 @@ const Home = ({questions, authedUser}) => {
 	const sorted = filtered.sort((a, b) => b.timestamp - a.timestamp)
 	return(
 		<React.Fragment>
-			<button	onClick={()=> setAnswered({answered: false})}>Unanswered Questions</button>
-			<button	onClick={()=> setAnswered({answered: true})}>answered Questions</button>
+			{/*<button	onClick={()=> setAnswered({answered: false})}>Unanswered Questions</button>*/}
+			{/*<button	onClick={()=> setAnswered({answered: true})}>answered Questions</button>*/}
 			<ul>
 				{sorted.map((q) => (
 					<li key={q.id}>

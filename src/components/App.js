@@ -1,38 +1,49 @@
 import React, {useEffect} from 'react'
 import {Route} from 'react-router-dom'
-import PrivateRoute from "./PrivateRoute";
-import Home from './Home'
-import NewQuestion from './NewQuestion'
+
+import Login from './Login'
 import Navbar from "./Navbar";
 import LeaderBoard from "./LeaderBoard";
-import Login from './Login'
+import QuestionsList from "./QuestionsList";
 import { connect } from 'react-redux'
-import {getInitialData} from "../store/actions/shared";
-import '../index.css'
+import {getInitialData} from "../store/actions/index";
+import CreateQuestion from "./CreateQuestion";
+
+
+let loggedIn = false
+const PrivateRoute = ({ component: Component, ...kwargs }) => (
+  <Route {...kwargs} render={(props) => (
+    loggedIn === true
+      ? <Component {...props} />
+      : <div>Please login first</div>
+  )}/>
+)
 
 const App = (props) => {
-    console.log(props)
+    // New common hook i/of componentDidMount
     useEffect(() => {
+        console.log(props)
         props.dispatch(getInitialData())
     })
   return (
-      <React.Fragment>
-        <div className="App">
-            <div className="app-address">Would You Rather ?</div>
-            <Navbar />
-            <Route exact path='/login'><Login /></Route>
-            <PrivateRoute exact path='/'><Home /></PrivateRoute>
-            <PrivateRoute exact path='/question'><NewQuestion /></PrivateRoute>
-            <PrivateRoute exact path='/leaderboard'><LeaderBoard /></PrivateRoute>
+      <>
+          <Navbar />
+          {!props.loadingStatus &&
+          <div className="App">
+            <PrivateRoute exact path='/' component={QuestionsList} />
+            <PrivateRoute exact path='/create' component={CreateQuestion} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/leaderboard' component={LeaderBoard} />
         </div>
-      </React.Fragment>
+          }
+      </>
   );
 }
 
-const mapStateToProps = ({authedUsers}) => {
+const mapStateToProps = ({questions, authedUsers}) => {
     return {
-        authedUsers,
-        notAuthorized: authedUsers == null
+        loggedIn: authedUsers !== null,
+        loadingStatus: questions === null
     }
 }
 export default connect(mapStateToProps)(App);
