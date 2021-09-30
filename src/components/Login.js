@@ -8,7 +8,7 @@ class Login extends React.Component{
 	state ={
 		redirect: false
 	}
-	handleClick(id) {
+	handleButtonClick(id) {
 		this.props.signIn(id)
 		this.setState({redirect: true})
 	}
@@ -21,12 +21,12 @@ class Login extends React.Component{
 						const {name, avatarURL} = this.props.users[id]
 						return (
 							<li key={id}>
-								<img alt={name}
+								<img style={{maxWidth: "100px"}} alt={name}
 								     src={avatarURL} />
 								<p>{name}</p>
 								<button
-									onClick={() => {this.handleClick(id)}}
-									>Log in with {id}
+									onClick={() => {this.handleButtonClick(id)}}
+									>Sign-in as => {id}
 								</button>
 							</li>
 						);
@@ -41,6 +41,6 @@ const mapStateToProps = ({users}) => {
 	return {users}
 }
 const mapDispatchToProps = dispatch => ({
-  signIn: id => dispatch(setAuthedUser(id))
+  signIn: (id) => dispatch(setAuthedUser(id))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Login) ;

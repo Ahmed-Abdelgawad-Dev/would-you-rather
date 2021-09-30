@@ -4,18 +4,17 @@ import {connect} from 'react-redux'
 import {customizeDate} from "../core/customizeDate";
 
 
-const UserCard = (props) => {
-	console.log('=>>>>>>>',props)
+const UserCard = ({author, question}) => {
 	return(
 		<div>
-			<h4>{props.author.name} Asks => </h4>
+			<h3>{author.name} is asking:  </h3>
 			<div>
-				<img src={props.author.avatarURL} alt={`${props.author.name}`}/>
+				<img style={{maxWidth: "100px"}} src={author.avatarURL} alt={`${author.name}`}/>
 			</div>
 			<div><h3>Would You Rather  ?</h3></div>
-			<p>{props.question.optionOne.text} OR {props.question.optionTwo.text}... ?</p>
-			<Link to={`question/${props.question.id}`}>View</Link>
-			<p>{customizeDate(props.question.timestamp)}</p>
+			<p>{question.optionOne.text} OR {question.optionTwo.text}... ?</p>
+			<Link to={`question/${question.id}`}>View</Link>
+			<p>{customizeDate(question.timestamp)}</p>
 		</div>
 	)
 }

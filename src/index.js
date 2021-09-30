@@ -8,6 +8,8 @@ import reducer from'./store/reducers'
 import {createStore} from "redux";
 
 
+
+
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(

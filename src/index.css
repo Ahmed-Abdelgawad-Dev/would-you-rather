@@ -7,28 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
-
-.nav-list {
-  list-style-type: none;
+.nav-items {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  column-gap: 50px;
-
+  gap: 20px;
+  list-style-type: none;
 }
 
-.app-address {
-  color: white;
-  background-color: dodgerblue;
-  font-weight: bolder;
-  padding: 20px 0;
-  font-size: x-large;
+.App {
   text-align: center;
+}
 
+li {
+  list-style-type: none;
+}
+
+img {
+  border-radius: 95%;
+  /*display: flow;*/
 }

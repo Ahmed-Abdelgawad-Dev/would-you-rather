@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
+import {Link} from 'react-router-dom'
 import {setAuthedUser} from "../store/actions";
 
 
@@ -35,11 +35,11 @@ const Navbar = ({authedUserName, authedUser, signOut}) => {
 const mapStateToProps = ({users, authedUser}) => {
 	return {
 		authedUser,
-		authedUserName: users[authedUser] && authedUser ? users[authedUser].name : 'No_User'
+		authedUserName: authedUser && users[authedUser] ? users[authedUser].name : null
 	}
 }
-const mapDispatchToProps = (dispatch) => {
-	return{signOut: () => dispatch(setAuthedUser(null))}
-}
+const mapDispatchToProps = (dispatch) => ({
+	signOut: () => dispatch(setAuthedUser(null))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

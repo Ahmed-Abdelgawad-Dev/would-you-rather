@@ -14,7 +14,7 @@ export const SAVE_ANSWER_TO_USER = 'SAVE_ANSWER_TO_USER'
 
 // Authed User saved in the local storage by k,v pairs
 export const setAuthedUser = (id) => {
-	localStorage.setItem('loggedUser', id)
+	localStorage.setItem('theAuthedUser', id)
 	return {type: SET_AUTHED_USER,id}
 }
 
@@ -62,7 +62,7 @@ export const saveAnswerToUser = (authedUser, id, answer) => {
 
 
 //Shared dispatching functions to manage the state
-let AUTHED_USER_ID = localStorage.getItem('loggedUser')
+let AUTHED_USER_ID = localStorage.getItem('theAuthedUser')
 if (!AUTHED_USER_ID || AUTHED_USER_ID === 'null') {
 	AUTHED_USER_ID = null
 }

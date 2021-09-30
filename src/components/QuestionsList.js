@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {connect} from "react-redux";
 import UserCard from "./UserCard";
+
 
 
 class QuestionsList extends React.Component {
@@ -10,22 +11,22 @@ class QuestionsList extends React.Component {
 
 	render() {
 		const IDs = this.state.questionsAnswered
-			? this.props.questionsIDs.filter((id) => this.props.answeredQuestionsIDs.includes(id))
-			: this.props.questionsIDs.filter((id) => !this.props.answeredQuestionsIDs.includes(id))
+			? this.props.questionsIDs.filter((id) => this.props.IDsAnswered.includes(id))
+			: this.props.questionsIDs.filter((id) => !this.props.IDsAnswered.includes(id))
 
 	return (
 		<div>
-			<button className={this.state.questionsAnswered ? 'none' : 'focus'}
-	          onClick={() => this.setState({showAnsweredQuestions: true})}>
+			<button
+	          onClick={() => this.setState({questionsAnswered: true})}>
 	          Answered Questions
 	        </button>
-	        <button className={this.state.questionsAnswered ? 'focus' : 'none'}
-	          onClick={() => this.setState({showAnsweredQuestions: false})}>
+	        <button
+	          onClick={() => this.setState({questionsAnswered: false})}>
 	          Unanswered Questions
 	        </button>
 			<ul>
-				{IDs.length !== 0
-					? 'No questions available'
+				{IDs.length === 0
+					? 'No available questions'
 					: IDs.map((id) => (
 						<li key={id}> <UserCard id={id} /></li>
 				))}
@@ -40,7 +41,7 @@ const mapStateToProps = ({authedUser, users, questions}) => {
 	return {
 	questionsIDs: Object.keys(questions)
 		.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
-	answeredQuestionsIDs: users[authedUser] ? Object.keys(users[authedUser].answers) : []
+	IDsAnswered: users[authedUser] ? Object.keys(users[authedUser].answers) : []
 	}
 }
 
