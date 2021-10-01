@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import {setAuthedUser} from "../store/actions";
+import {setAuthedUser} from "../store/actions/authedUser";
 
 
 class Login extends React.Component{

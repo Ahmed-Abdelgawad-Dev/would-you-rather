@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
-import {setAuthedUser} from "../store/actions";
+import {setAuthedUser} from "../store/actions/authedUser";
 
 
 

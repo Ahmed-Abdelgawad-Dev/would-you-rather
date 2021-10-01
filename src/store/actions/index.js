@@ -2,64 +2,9 @@
 import {
 	_getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer
 } from "../../core/_DATA";
-
-// Constants
-export const SET_AUTHED_USER = 'SET_AUTHED_USER'
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-export const ADD_QUESTION = 'ADD_QUESTION'
-export const SAVE_ANSWER_OF_QUESTION ='SAVE_ANSWER_OF_QUESTION'
-export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const ADD_QUESTION_TO_USER ='ADD_QUESTION_TO_USER'
-export const SAVE_ANSWER_TO_USER = 'SAVE_ANSWER_TO_USER'
-
-// Authed User saved in the local storage by k,v pairs
-export const setAuthedUser = (id) => {
-	localStorage.setItem('theAuthedUser', id)
-	return {type: SET_AUTHED_USER,id}
-}
-
-
-// Questions
-// receiveQuestions action creator
-export const receiveQuestions = (questions) => {
-	return {type: RECEIVE_QUESTIONS, questions}
-}
-
-// addQuestion action creator
-export const addQuestion = (question) => {
-	return {type: ADD_QUESTION, question}
-}
-
-// saveAnswerOfQuestion action creator
-export const saveAnswerOfQuestion = (id, answer, authedUser) => {
-  return {
-    type: SAVE_ANSWER_OF_QUESTION,
-	  id,
-	  answer,
-	  authedUser,
-  }
-}
-
-
-// Users
-// receiveUsers action creator
-export const receiveUsers = (users) => {
-	return {type: RECEIVE_USERS, users}
-}
-
-// AddQuestionToUser action creator
-export const AddQuestionToUser = (authedUser, id) => {
-	return {type: ADD_QUESTION_TO_USER, authedUser, id}
-}
-
-// saveAnswerToUser action creator
-export const saveAnswerToUser = (authedUser, id, answer) => {
-	return {
-		type: SAVE_ANSWER_TO_USER,
-		authedUser, id, answer,
-	}
-}
-
+import {receiveUsers, AddQuestionToUser, saveAnswerToUser} from "./users";
+import {receiveQuestions, addQuestion, saveAnswerOfQuestion} from "./questions";
+import {setAuthedUser} from "./authedUser";
 
 //Shared dispatching functions to manage the state
 let AUTHED_USER_ID = localStorage.getItem('theAuthedUser')
