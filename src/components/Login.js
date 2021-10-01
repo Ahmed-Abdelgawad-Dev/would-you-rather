@@ -26,7 +26,7 @@ class Login extends React.Component{
 								<p>{name}</p>
 								<button
 									onClick={() => {this.handleButtonClick(id)}}
-									>Sign-in as => {id}
+									>Sign in as:  {id}
 								</button>
 							</li>
 						);

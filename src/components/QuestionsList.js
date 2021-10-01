@@ -15,7 +15,7 @@ class QuestionsList extends React.Component {
 			: this.props.questionsIDs.filter((id) => !this.props.IDsAnswered.includes(id))
 
 	return (
-		<div>
+		<div className='question-type'>
 			<button
 	          onClick={() => this.setState({questionsAnswered: true})}>
 	          Answered Questions
