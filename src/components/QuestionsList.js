@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import UserCard from "./UserCard";
 
 
-
 class QuestionsList extends React.Component {
 	state = {
 		questionsAnswered: false,
@@ -18,11 +17,15 @@ class QuestionsList extends React.Component {
 		<div className='question-type'>
 			<button
 	          onClick={() => this.setState({questionsAnswered: true})}>
-	          Answered Questions
+	          Answered Questions {
+	          	this.props.questionsIDs.filter((id) => this.props.IDsAnswered.includes(id)).length
+			}
 	        </button>
 	        <button
 	          onClick={() => this.setState({questionsAnswered: false})}>
-	          Unanswered Questions
+	          Unanswered Questions {
+	          	this.props.questionsIDs.filter((id) => !this.props.IDsAnswered.includes(id)).length
+	        }
 	        </button>
 			<ul>
 				{IDs.length === 0

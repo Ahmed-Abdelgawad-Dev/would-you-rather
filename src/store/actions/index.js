@@ -2,11 +2,11 @@
 import {
 	_getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer
 } from "../../core/_DATA";
-import {receiveUsers, AddQuestionToUser, saveAnswerToUser} from "./users";
-import {receiveQuestions, addQuestion, saveAnswerOfQuestion} from "./questions";
+import {AddQuestionToUser, receiveUsers, saveAnswerToUser} from "./users";
+import {addQuestion, receiveQuestions, saveAnswerOfQuestion} from "./questions";
 import {setAuthedUser} from "./authedUser";
 
-//Shared dispatching functions to manage the state
+// Get the authedUser from the local storage
 let AUTHED_USER_ID = localStorage.getItem('theAuthedUser')
 if (!AUTHED_USER_ID || AUTHED_USER_ID === 'null') {
 	AUTHED_USER_ID = null

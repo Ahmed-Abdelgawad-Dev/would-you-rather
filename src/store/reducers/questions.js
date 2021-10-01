@@ -3,10 +3,9 @@ import {
 } from "../actions/questions";
 
 
-
 // questions reducer
 export function questions(state = {}, action) {
-  const { type, question, id, answer, authedUser } = action
+  const { authedUser, id, type, question, answer } = action
   switch (type) {
     case RECEIVE_QUESTIONS:
       return {

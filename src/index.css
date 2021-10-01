@@ -51,3 +51,13 @@ img {
 .home {
   text-decoration: none;
 }
+.submit-btn {
+  color: red;
+  background-color: white;
+  border: 1px solid blue;
+}
+.submit-btn:hover {
+  color: white;
+  background-color: red;
+  border: 1px solid blue;
+}

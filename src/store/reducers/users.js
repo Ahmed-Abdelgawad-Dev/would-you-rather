@@ -9,7 +9,7 @@ export function users(state= {}, action) {
 		case RECEIVE_USERS:
 			return {...state, ...action.users}
 		case ADD_QUESTION_TO_USER:
-			const {authedUser, id} = action
+			const {id,authedUser} = action
 			return {
 				...state,[authedUser]: {...state[authedUser]},
 				questions: state[authedUser].questions.concat(id)

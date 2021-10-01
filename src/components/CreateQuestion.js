@@ -13,36 +13,42 @@ class CreateQuestion extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.addQuestion(this.state.optionOne, this.state.optionTwo)
+		this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
 		this.setState({redirect: true})
 	}
 	render() {
+		// console.log(this.state.optionOne)
+		// console.log(this.state.optionTwo)
 		const {avatar, authedUserName} = this.props;
 		if(this.state.redirect) {
 			return <Redirect to='/' />
 		}
 		return(
 			<div>
-				<h2>Would you rather ???</h2>
+				<h2>Would you rather ?</h2>
 				<div>
-					<img style={{maxWidth: "100px"}} src={avatar} alt={`authedUserName${authedUserName}`}/>
+					<img
+						style={{maxWidth: "100px", borderRadius: "90px"}}
+						src={avatar} alt={`user:${authedUserName}`}/>
 					<form onSubmit={this.handleSubmit}>
 						<textarea
 							onChange={e => this.setState({optionOne: e.target.value})}
 							value={this.state.optionOne}
-							placeholder="Suggestion One"
+							placeholder="Variant One"
 							/>
-
 						<h4>Or</h4>
 						<textarea
 							onChange={e => this.setState({optionTwo: e.target.value})}
 							value={this.state.optionTwo}
-							placeholder="Suggestion Two"
+							placeholder="Variant Two"
 							/>
 						<br/><br/>
-						<button type='submit' disabled={
-							this.state.optionOne === '' || this.state.optionOne === ''
-						}>Submit
+						<button
+							className="submit-btn"
+							type='submit'
+							disabled={this.state.optionOne === '' || this.state.optionOne === ''}
+						>
+							Submit
 						</button>
 					</form>
 				</div>
@@ -51,8 +57,8 @@ class CreateQuestion extends Component {
 		)
 	}
 }
-const mapStateToProps = ({users, authedUser}) => ({avatar: users[authedUser].avatarURL, authedUserName: users[authedUser].name})
-const mapDispatchToProps = (dispatch) => ({addQuestion: (one, two) => dispatch(handleAddQuestion(one, two))})
+const mapStateToProps = ({users, authedUser}) => ({
+	avatar: users[authedUser].avatarURL, authedUserName: users[authedUser].name
+})
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateQuestion);
+export default connect(mapStateToProps)(CreateQuestion);

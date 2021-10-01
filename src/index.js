@@ -9,8 +9,7 @@ import {createStore} from "redux";
 
 
 
-
-const store = createStore(reducer, middleware)
+export const store = createStore(reducer, middleware)
 
 ReactDOM.render(
 	<Router>
