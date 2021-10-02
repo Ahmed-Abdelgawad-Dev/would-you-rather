@@ -31,8 +31,7 @@ class QuestionsList extends React.Component {
 				{IDs.length === 0
 					? 'No available questions'
 					: IDs.map((id) => (
-						// <li key={id}> <UserCard id={id} /></li>
-						<UserCard id={id} />
+						<li key={id}> <UserCard id={id} /></li>
 				))}
 			</ul>
 		</div>

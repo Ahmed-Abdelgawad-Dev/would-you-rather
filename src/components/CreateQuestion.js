@@ -14,12 +14,13 @@ class CreateQuestion extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
+
 		this.setState({redirect: true})
 	}
 	render() {
 		// console.log(this.state.optionOne)
 		// console.log(this.state.optionTwo)
-		const {avatar, authedUserName} = this.props;
+		const {avatarURL, authedUserName} = this.props;
 		if(this.state.redirect) {
 			return <Redirect to='/' />
 		}
@@ -29,7 +30,7 @@ class CreateQuestion extends Component {
 				<div>
 					<img
 						style={{maxWidth: "100px", borderRadius: "90px"}}
-						src={avatar} alt={`user:${authedUserName}`}/>
+						src={avatarURL} alt={`user:${authedUserName}`}/>
 					<form onSubmit={this.handleSubmit}>
 						<textarea
 							onChange={e => this.setState({optionOne: e.target.value})}
@@ -53,12 +54,12 @@ class CreateQuestion extends Component {
 					</form>
 				</div>
 			</div>
-
 		)
 	}
 }
 const mapStateToProps = ({users, authedUser}) => ({
-	avatar: users[authedUser].avatarURL, authedUserName: users[authedUser].name
+	avatarURL: users[authedUser].avatarURL,
+	authedUserName: users[authedUser].name
 })
 
 export default connect(mapStateToProps)(CreateQuestion);

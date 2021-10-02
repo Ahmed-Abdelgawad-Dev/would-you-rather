@@ -5,6 +5,7 @@ import {setAuthedUser} from "../store/actions/authedUser";
 
 
 
+
 const Navbar = ({authedUserName, authedUser, signOut}) => {
 	return(
 		<div>
@@ -14,18 +15,17 @@ const Navbar = ({authedUserName, authedUser, signOut}) => {
 				<li><Link to='/leaderboard'>Leader Board</Link></li>
 		        {authedUser
 		          ? (
-		          	<div>
+		          	<React.Fragment>
 		              <li>
 		                <Link to='/login' onClick={() => signOut()}>Sign Out</Link>
 		              </li>
 		              <li>{authedUserName}</li>
-		            </div>
+		            </React.Fragment>
 			        )
 		          : (<li>
 		              <Link to='/login' >Login</Link>
 		            </li>)
 		        }
-
 			</ul>
 
 		</div>
@@ -34,8 +34,7 @@ const Navbar = ({authedUserName, authedUser, signOut}) => {
 
 const mapStateToProps = ({users, authedUser}) => {
 	return {
-		authedUser,
-		authedUserName: authedUser && users[authedUser] ? users[authedUser].name : null
+		authedUser, authedUserName: authedUser && users[authedUser] ? users[authedUser].name : null
 	}
 }
 const mapDispatchToProps = (dispatch) => ({
