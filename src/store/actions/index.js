@@ -8,7 +8,7 @@ import {setAuthedUser} from "./authedUser";
 
 // Get the authedUser from the local storage
 let AUTHED_USER_ID = localStorage.getItem('theAuthedUser')
-if (!AUTHED_USER_ID || AUTHED_USER_ID === 'null') {
+if (AUTHED_USER_ID === 'null') {
 	AUTHED_USER_ID = null
 }
 
@@ -25,13 +25,12 @@ export const getInitialData = () => {
 }
 
 // handle the added question
-export const handleAddQuestion = (optionOne, optionTwo) => {
+export const handleAddQuestion = (optionOneText, optionTwoText) => {
 	return (dispatch, getState) => {
 		const {authedUser} = getState()
 		return _saveQuestion({
-			author: authedUser, optionOne, optionTwo
-		})
-			.then((question) => {
+			author: authedUser, optionOneText, optionTwoText
+		}).then((question) => {
 				dispatch(addQuestion(question))
 				dispatch(AddQuestionToUser(authedUser, question.id))
 			})

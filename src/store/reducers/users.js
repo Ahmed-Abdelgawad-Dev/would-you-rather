@@ -11,18 +11,18 @@ export function users(state= {}, action) {
 		case ADD_QUESTION_TO_USER:
 			const {id,authedUser} = action
 			return {
-				...state,[authedUser]: {...state[authedUser]},
-				questions: state[authedUser].questions.concat(id)
+				...state,
+				[authedUser]: {...state[authedUser], questions: state[authedUser].questions.concat(id)},
 			}
 		case SAVE_ANSWER_TO_USER:
 			const {answer} = action
 			return {
 				...state, [action.authedUser]: {
-					...state[action.authedUser],
-					answers: {
-						...state[action.authedUser].answers,
-						[action.id] : answer
+					...state[action.authedUser], answers: {
+									...state[action.authedUser].answers,
+									[action.id] : answer
 					}
+
 				}
 			}
 		default:
