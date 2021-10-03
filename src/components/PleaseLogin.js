@@ -1,7 +1,7 @@
 const PleaseLogin = () => {
 	return(
-		<div>
-			<h2>please login first</h2>
+		<div className="please-login">
+			<h2>Please login first !</h2>
 		</div>
 	)
 }

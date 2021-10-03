@@ -1,4 +1,5 @@
 body {
+  background-color: mediumturquoise;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,27 +9,94 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button {
-  padding: 0 5px;
-  margin: 0 5px;
-  background-color: royalblue;
-  color: white;
-  font-weight: bold;
-  font-size: large;
-  border-radius: 5px;
-}
 
-.App {
+.app {
   text-align: center;
 }
 
 li {
   list-style-type: none;
 }
-.question-type {
-  justify-content: center;
-  align-content: center;
 
+.question-type button:hover {
+  color: black;
+  background-color: cornflowerblue;
+}
+
+.question-type button{
+  background-color: cornflowerblue;
+  padding: 5px;
+  margin: 5px;
+  font-weight: bolder;
+  border-radius: 10px ;
+  border: 1px  blue;
+  color: white;
+  font-size: large;
+}
+.question-type button.focus{
+  opacity: .7;
+}
+
+.login-list img {
+  max-width: 130px;
+  border-radius: 25px;
+  border: 1px solid midnightblue;
+}
+
+.please-login {
+  font-weight: bolder;
+  color: red;
+}
+
+.login-btn {
+  padding: 5px 20px;
+  margin: 3px;
+  background-color: royalblue;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+
+.login-btn:hover {
+  color: royalblue;
+  background-color: white;
+}
+
+img {
+  max-width: 190px;
+  border-radius: 25px;
+  border: 1px solid midnightblue;
+}
+
+img:hover {
+  opacity: 90%;
+}
+
+.user-name {
+ font-weight: bold;
+  color: blue;
+}
+
+.nav-list * {
+  font-weight: bold;
+  color: midnightblue;
+  text-decoration: none;
+  font-size: large;
+}
+
+.nav-list :hover {
+  color: white;
+}
+
+
+.wyr span {
+  color: red;
+  font-weight: bold;
+}
+
+p {
+  font-weight: bold;
 }
 
 .nav-list {
@@ -36,28 +104,83 @@ li {
   gap: 25px;
   list-style-type: none;
 }
-.nav-list * :hover {
+.wyr div {
   color: red;
-}
-.nav-list * {
-  font-weight: bold;
-  color: blue;
-  text-decoration: none;
 }
 
-img {
-  max-width: 100px;
+.one, .two{
+  font-weight: bold;
+  color: navy;
 }
-.home {
-  text-decoration: none;
+
+.date {
+  opacity: .5;
+  font-weight: normal;
 }
-.submit-btn {
+
+.user-name {
+  color: darkred;
+}
+
+.qa{
+  font-weight: bold;
+  color: crimson;
+}
+
+.score {
+  color: darkmagenta;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.ques-num {
+  border-radius: 50%;
+  padding: 7px;
   color: red;
-  background-color: white;
-  border: 1px solid blue;
+  /*background-color: red;*/
 }
-.submit-btn:hover {
+
+.wyr button.btn-link {
+  background-color: whitesmoke;
+  padding: 10px;
+}
+.wyr button.btn-link:hover {
+  opacity: .9;
+  background-color: whitesmoke;
+}
+
+.submit-btn {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
   color: white;
-  background-color: red;
-  border: 1px solid blue;
+  font-family: "DejaVu Math TeX Gyre", monospace;
+  font-weight: bolder;
+  background-color: dodgerblue;
+}
+
+.submit-btn:hover {
+  opacity: .8;
+}
+
+.connected-user {
+  color:white;
+}
+
+.asked-by {
+  color: crimson;
+}
+.this {
+  color: darkred;
+}
+
+.votes {
+  color: red;
+}
+
+.votes-div p{
+  font-weight: bold;
+}
+.rather {
+  color: crimson;
 }

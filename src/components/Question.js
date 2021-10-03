@@ -1,18 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {handleSaveAnswerOfQuestion} from "../store/actions";
+import PropTypes from 'prop-types';
 
 
-
+// Class component is used for having a state with changeable values.
 class Question extends React.Component {
 	state = {
 		Alert: false,
-		option: 'none'
+		option: 'empty'
 	}
+
 	handleChange(e) {this.setState({option: e.target.value, Alert: false,})}
+
 	handleSubmit (e) {
 		e.preventDefault()
-		this.state.option === 'none'
+		this.state.option === 'empty'
 			? this.setState({Alert: true})
 			: this.props.dispatch(handleSaveAnswerOfQuestion(
 				this.props.question.id, this.state.option
@@ -20,15 +23,14 @@ class Question extends React.Component {
 	}
 
 	render() {
-		console.log('question is: => ',this.props.question)
 		return(
 			<div>
-				<h2>{this.props.author.name} is asking</h2>
+				<h2><span className="asked-by">{this.props.author.name}</span> is asking  </h2>
 				<div>
-					<img style={{maxWidth: "100px"}} src={this.props.author.avatarURL} alt={this.props.author.avatarURL}/>
+					<img src={this.props.author.avatarURL} alt={this.props.author.name}/>
 				</div>
 				<div>
-					<h2>Would You Rather ...</h2>
+					<h2 className="rather">Would You Rather ...</h2>
 					<form
 						onChange={(e) => this.handleChange(e)}
 						onSubmit={(e) => this.handleSubmit(e)}
@@ -48,6 +50,12 @@ class Question extends React.Component {
 			</div>
 		);
 	}
+}
+
+Question.propTypes = {
+	signOut: PropTypes.func,
+	users: PropTypes.object,
+	question: PropTypes.object
 }
 
 export default connect()(Question)

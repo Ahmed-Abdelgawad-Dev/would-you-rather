@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {handleAddQuestion} from "../store/actions";
+import PropTypes from 'prop-types'
 
-
+// Class component as it brings changeable data
 class CreateQuestion extends Component {
 	state = {
 		redirect: false,
@@ -14,41 +15,38 @@ class CreateQuestion extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
-
 		this.setState({redirect: true})
 	}
+
 	render() {
-		// console.log(this.state.optionOne)
-		// console.log(this.state.optionTwo)
 		const {avatarURL, authedUserName} = this.props;
 		if(this.state.redirect) {
 			return <Redirect to='/' />
 		}
+
 		return(
 			<div>
-				<h2>Would you rather ?</h2>
+				<h2 className="rather">Would you rather ?</h2>
 				<div>
-					<img
-						style={{maxWidth: "100px", borderRadius: "90px"}}
-						src={avatarURL} alt={`user:${authedUserName}`}/>
-					<form onSubmit={this.handleSubmit}>
+					<img src={avatarURL} alt={`user:${authedUserName}`}/>
+					<br/><br/>
+					<form className="form" onSubmit={this.handleSubmit}>
 						<textarea
 							onChange={e => this.setState({optionOne: e.target.value})}
 							value={this.state.optionOne}
 							placeholder="Variant One"
 							/>
-						<h4>Or</h4>
+						<h3>Or</h3>
 						<textarea
 							onChange={e => this.setState({optionTwo: e.target.value})}
 							value={this.state.optionTwo}
 							placeholder="Variant Two"
 							/>
-						<br/><br/>
+						<br/>
 						<button
 							className="submit-btn"
 							type='submit'
-							disabled={this.state.optionOne === '' || this.state.optionOne === ''}
-						>
+							disabled={this.state.optionOne === '' || this.state.optionOne === ''}>
 							Submit
 						</button>
 					</form>
@@ -57,7 +55,13 @@ class CreateQuestion extends Component {
 		)
 	}
 }
+
+CreateQuestion.propTypes = {
+	authedUserName: PropTypes.string
+}
+
 const mapStateToProps = ({users, authedUser}) => ({
+	// turning long reaching values into variables
 	avatarURL: users[authedUser].avatarURL,
 	authedUserName: users[authedUser].name
 })

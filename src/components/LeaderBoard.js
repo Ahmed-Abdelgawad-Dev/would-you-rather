@@ -1,23 +1,28 @@
 import React from 'react'
 import { connect } from "react-redux";
+import PropTypes from 'prop-types'
 
 
 const LeaderBoard = ({ IDs, users }) => {
   return(
     <React.Fragment>
       <ul>
+
         {IDs && IDs.map(id => {
-          const {answers, avatarURL, questions, name} = users[id]
-          return (
+
+            const {answers, avatarURL, questions, name} = users[id]
+
+            return (
               <li key={id}>
-                <h3>{name}</h3>
+                <h3 className="user-name">{name}</h3>
                 <div>
-                  <img style={{maxWidth: "100px"}} src={avatarURL} alt={`name:${name}`}/>
-                  <div>
+                  <img src={avatarURL} alt={`name:${name}`}/>
+                  <div className="qa">
+                      <br/>
                     <span>Questions {questions.length}</span> <br/>
-                    <span>Answers: {Object.keys(answers).length}</span>
-                    <h4>Total is: {questions.length + Object.keys(answers).length}</h4>
+                    <span >Answers: {Object.keys(answers).length}</span>
                   </div>
+                    <h4 className="score">Score :  {questions.length + Object.keys(answers).length}</h4>
                     <hr/>
                 </div>
               </li>
@@ -28,6 +33,9 @@ const LeaderBoard = ({ IDs, users }) => {
   )
 }
 
+LeaderBoard.propTypes = {
+    users: PropTypes.object
+}
 
 const mapStateToProps = ({ users }) => ({
   users,

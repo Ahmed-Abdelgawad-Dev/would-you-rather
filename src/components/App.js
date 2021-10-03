@@ -11,9 +11,7 @@ import CreateQuestion from "./CreateQuestion";
 import QuestionManager from "./QuestionManager";
 import PleaseLogin from "./PleaseLogin";
 
-
-
-// Stackoverflow Solution
+// Stackoverflow Solution for implementing the protected route.
 let theAuthedUser = false
 const PrivateRoute = ({ component: Component, ...kwargs }) => (
   <Route {...kwargs} render={(props) => (
@@ -24,18 +22,19 @@ const PrivateRoute = ({ component: Component, ...kwargs }) => (
 )
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.dispatch(getInitialData())
   }
 
   render() {
     theAuthedUser = this.props.theAuthedUser
+
     return (
         <React.Fragment>
           <Navbar />
-          {!this.props.loadingStatus &&
-            <div className='container'>
+          <div className="app">
+            {this.props.questions !== null &&
+            <div className='app-container'>
               <Route path='/login' component={Login} />
               <PrivateRoute path='/' exact component={QuestionsList} />
               <PrivateRoute path='/create' component={CreateQuestion} />
@@ -43,43 +42,15 @@ class App extends React.Component {
               <PrivateRoute path='/leaderboard' component={LeaderBoard} />
             </div>
           }
+          </div>
+
         </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ questions, authedUser }) => ({
-  loadingStatus: questions === null,
+const mapStateToProps = ({ authedUser }) => ({
   theAuthedUser: authedUser !== null,
 })
-//
-// const App = ({loadingStatus, dispatch}) => {
-//     console.log(localStorage.theAuthedUser)
-//     // New common hook i/of componentDidMount
-//     useEffect(() => {
-//         dispatch(getInitialData())
-//     })
-//
-//       return (
-//           <React.Fragment>
-//               <Navbar />
-//               {!loadingStatus &&
-//                     <div className="App">
-//                     <Route exact path='/' component={QuestionsList} />
-//                     <Route exact path='/create' component={CreateQuestion} />
-//                     <Route exact path='/leaderboard' component={LeaderBoard} />
-//                     <Route path='/question/:id' component={QuestionManager} />
-//                     <Route exact path='/login' component={Login} />
-//                   </div>
-//               }
-//           </React.Fragment>
-//       );
-// }
-//
-// const mapStateToProps = ({questions, authedUsers}) => {
-//     return {
-//         loadingStatus: questions === null,
-//         theAuthedUser: authedUsers !== null
-//     }
-// }
+
 export default connect(mapStateToProps)(App);
