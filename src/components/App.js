@@ -11,6 +11,7 @@ import CreateQuestion from "./CreateQuestion";
 import QuestionManager from "./QuestionManager";
 import PleaseLogin from "./PleaseLogin";
 
+
 // Stackoverflow Solution for implementing the protected route.
 let theAuthedUser = false
 const PrivateRoute = ({ component: Component, ...kwargs }) => (

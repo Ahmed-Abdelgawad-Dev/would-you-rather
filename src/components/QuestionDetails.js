@@ -13,14 +13,14 @@ const QuestionDetails = ({question, author})=>{
             <h2 className="votes">Votes:</h2>
             <div>
               <p className="options">{question.optionOne.text}</p>
-              <p className="percent">{`${(question.optionOne.votes.length / sumOfVotes * 100).toFixed(0)}%`}</p>
               <p className="of">{`${question.optionOne.votes.length} of total ${sumOfVotes} votes`}</p>
+              <p className="percent">{`${(question.optionOne.votes.length / sumOfVotes * 100).toFixed(0)}%`}</p>             
             </div>
 			<br/><hr/>
             <div>
               <p className="options">{question.optionTwo.text}</p>
-              <p className="percent">{`${(question.optionTwo.votes.length / sumOfVotes * 100).toFixed(0)}%`}</p>
               <p className="of">{`${question.optionTwo.votes.length} of total ${sumOfVotes} votes`}</p>
+              <p className="percent">{`${(question.optionTwo.votes.length / sumOfVotes * 100).toFixed(0)}%`}</p>
             </div>
 
 		</div>
