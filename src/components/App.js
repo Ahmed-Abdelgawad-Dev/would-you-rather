@@ -31,6 +31,7 @@ class App extends React.Component {
 
     return (
         <React.Fragment>
+            <header className="head">Would You Rather App</header>
           <Navbar />
           <div className="app">
             {this.props.questions !== null &&

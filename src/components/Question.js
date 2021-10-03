@@ -44,7 +44,7 @@ class Question extends React.Component {
 			            <span>{this.props.question.optionTwo.text}</span>
 					</div>
 						{this.state.Alert && <h3>Please Choose An Option !</h3>}
-						<input type='submit' value='Submit' />
+						<input className="sub" type='submit' value='Submit' />
 					</form>
 				</div>
 			</div>

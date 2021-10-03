@@ -175,7 +175,7 @@ p {
 }
 
 .votes {
-  color: red;
+  color: darkmagenta;
 }
 
 .votes-div p{
@@ -183,4 +183,42 @@ p {
 }
 .rather {
   color: crimson;
+}
+
+.sub {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-family: "DejaVu Math TeX Gyre", monospace;
+  font-weight: bolder;
+  background-color: dodgerblue;
+}
+
+.sub:hover {
+  opacity: .8;
+}
+
+.percent {
+  color:red;
+}
+
+.options {
+  color: crimson;
+  font-size: larger;
+}
+
+.of {
+  color: brown;
+}
+
+.head {
+  text-align: center;
+  font-weight: bolder;
+  color: mediumblue;
+  padding: 10px;
+  margin: 10px;
+  font-size: xx-large;
+  font-family: "Source Code Pro ExtraLight", -apple-system, "JetBrains Mono ExtraBold", sans-serif;
+
 }
