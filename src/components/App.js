@@ -10,6 +10,7 @@ import {getInitialData} from "../store/actions/index";
 import CreateQuestion from "./CreateQuestion";
 import QuestionManager from "./QuestionManager";
 import PleaseLogin from "./PleaseLogin";
+import Page404 from "./Page404";
 
 
 // Stackoverflow Solution for implementing the protected route.
@@ -37,11 +38,12 @@ class App extends React.Component {
           <div className="app">
             {this.props.questions !== null &&
             <div className='app-container'>
-              <Route path='/login' component={Login} />
-              <PrivateRoute path='/' exact component={QuestionsList} />
-              <PrivateRoute path='/add' component={CreateQuestion} />
-              <Route path='/question/:id' component={QuestionManager} />
-              <PrivateRoute path='/leaderboard' component={LeaderBoard} />
+              <Route            exact path='/login' component={Login} />
+              <PrivateRoute     exact path='/' component={QuestionsList} />
+              <PrivateRoute     exact path='/add' component={CreateQuestion} />
+              <PrivateRoute            exact path='/question/:id' component={QuestionManager} />
+              <PrivateRoute     exact path='/leaderboard' component={LeaderBoard} />
+              {/*<Route                  path='/' component={Page404} />*/}
             </div>
           }
           </div>
