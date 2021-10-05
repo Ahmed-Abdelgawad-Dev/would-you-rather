@@ -10,7 +10,7 @@ const Navbar = ({authedUserName, authedUser, signOut}) => {
 		<div className="nav">
 			<ul className="nav-list">
 				<li><Link to='/'>Home</Link></li>
-				<li><Link to='/create'>Create Question</Link></li>
+				<li><Link to='/add'>Create Question</Link></li>
 				<li><Link to='/leaderboard'>Leader Board</Link></li>
 		        {/* Redirect the user to the app functionalities if authed, else to login link */}
 				{authedUser
