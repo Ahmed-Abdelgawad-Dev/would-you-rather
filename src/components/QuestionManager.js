@@ -3,6 +3,7 @@ import Question from './Question'
 import QuestionDetails from "./QuestionDetails";
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import {withRouter} from "react-router-dom";
 
 // None class component as it has no state.
 const QuestionManager =({question, users, authedUser}) => {
@@ -25,7 +26,8 @@ const QuestionManager =({question, users, authedUser}) => {
 	)
 }
 const mapStateToProps = ({ authedUser, users, questions }, props) => ({
-  authedUser, users, question: questions[props.match.params.id]
+  authedUser, users,
+	question: questions[props.match.params.id]
 })
 
 QuestionManager.propTypes = {
@@ -34,4 +36,4 @@ QuestionManager.propTypes = {
 	authedUser: PropTypes.string
 }
 
-export default connect(mapStateToProps)(QuestionManager);
+export default withRouter(connect(mapStateToProps)(QuestionManager));

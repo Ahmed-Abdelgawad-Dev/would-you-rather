@@ -5,5 +5,4 @@ export const setAuthedUser = (id) => {
 	localStorage.setItem('', id)
 	return {type: SET_AUTHED_USER,id}
 }
-
 //theAuthedUser

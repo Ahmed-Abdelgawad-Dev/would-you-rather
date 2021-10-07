@@ -1,6 +1,6 @@
 import React from 'react'
 import  '../index.css'
-import {Route} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 import Login from './Login'
 import Navbar from "./Navbar";
 import LeaderBoard from "./LeaderBoard";
@@ -9,19 +9,24 @@ import { connect } from 'react-redux'
 import {getInitialData} from "../store/actions/index";
 import CreateQuestion from "./CreateQuestion";
 import QuestionManager from "./QuestionManager";
-import PleaseLogin from "./PleaseLogin";
-import Page404 from "./Page404";
 
 
-// Stackoverflow Solution for implementing the protected route.
+
+
 let theAuthedUser = false
-const PrivateRoute = ({ component: Component, ...kwargs }) => (
-  <Route {...kwargs} render={(props) => (
-    theAuthedUser === true
-      ? <Component {...props} />
-      : <PleaseLogin />
-  )}/>
-)
+//https://ui.dev/react-router-v5-protected-routes-authentication/
+function PrivateRoute({ children, ...rest }) {
+	return (
+		<Route {...rest} render={({ location }) => {
+			return theAuthedUser
+				? children
+				: <Redirect to={{
+					pathname: '/login',
+					state: { from: location }
+				}}/>
+		}} />
+	)
+}
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,16 +43,14 @@ class App extends React.Component {
           <div className="app">
             {this.props.questions !== null &&
             <div className='app-container'>
-              <Route            exact path='/login' component={Login} />
-              <PrivateRoute     exact path='/' component={QuestionsList} />
-              <PrivateRoute     exact path='/add' component={CreateQuestion} />
-              <PrivateRoute            exact path='/question/:id' component={QuestionManager} />
-              <PrivateRoute     exact path='/leaderboard' component={LeaderBoard} />
-              {/*<Route                  path='/' component={Page404} />*/}
+              <Route            exact path='/login'><Login/></Route>
+              <PrivateRoute     exact path='/'><QuestionsList/></PrivateRoute>
+              <PrivateRoute     exact path='/add'><CreateQuestion/></PrivateRoute>
+              <PrivateRoute            exact path='/question/:id'><QuestionManager/></PrivateRoute>
+              <PrivateRoute     exact path='/leaderboard'><LeaderBoard/></PrivateRoute>
             </div>
           }
           </div>
-
         </React.Fragment>
     );
   }

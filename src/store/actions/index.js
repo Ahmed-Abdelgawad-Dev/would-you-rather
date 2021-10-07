@@ -11,6 +11,7 @@ let AUTHED_USER_ID = localStorage.getItem('theAuthedUser')
 if (AUTHED_USER_ID === 'null') {
 	AUTHED_USER_ID = null
 }
+// let AUTHED_USER_ID = 'theAuthedUser'
 
 // fetch users and questions
 export const getInitialData = () => {

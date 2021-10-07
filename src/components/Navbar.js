@@ -17,9 +17,8 @@ const Navbar = ({authedUserName, authedUser, signOut}) => {
 		          ? (
 		          	<div>
 		              <li>
-		                <Link to='/login' onClick={() => signOut()}>Sign Out</Link>
+		                <Link to='/login' onClick={() => signOut()}>Sign out:  <span className="connected-user">{authedUserName}</span></Link>
 		              </li>
-		              <li className="connected-user">{authedUserName}</li>
 		            </div>
 			        )
 		          : (<li>
