@@ -4,6 +4,7 @@ import QuestionDetails from "./QuestionDetails";
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import {withRouter} from "react-router-dom";
+import Page404 from "./Page404";
 
 // None class component as it has no state.
 const QuestionManager =({question, users, authedUser}) => {
@@ -19,7 +20,7 @@ const QuestionManager =({question, users, authedUser}) => {
 
 						: <Question author={users[question.author]} question={question} />)
 
-					: 'Something went wrong'
+					: <Page404/>
 				}
 			</div>
 		</div>

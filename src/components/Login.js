@@ -23,6 +23,7 @@ const Login =(props)=>{
 	return (
 		<div>
 			<ul className="login-list">
+				<h3>Login Page</h3>
 				{Object.keys(props.users).map((id) => {
 					const {name, avatarURL} = props.users[id]
 					return (
