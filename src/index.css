@@ -149,6 +149,10 @@ p {
   background-color: whitesmoke;
 }
 
+.plz-login {
+  color: red;
+}
+
 .submit-btn {
   margin: 10px;
   padding: 10px;

@@ -23,7 +23,7 @@ const Login =(props)=>{
 	return (
 		<div>
 			<ul className="login-list">
-				<h3 style={{color: "red"}}>Please login first </h3>
+				<h3 className="plz-login">Please login first </h3>
 				{Object.keys(props.users).map((id) => {
 					const {name, avatarURL} = props.users[id]
 					return (

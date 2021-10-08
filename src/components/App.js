@@ -47,9 +47,9 @@ class App extends React.Component {
 					  <Route            exact path='/login'><Login/></Route>
 					  <PrivateRoute     exact path='/'><QuestionsList/></PrivateRoute>
 					  <PrivateRoute     exact path='/add'><CreateQuestion/></PrivateRoute>
-					  <PrivateRoute     exact path='/question/:id'><QuestionManager/></PrivateRoute>
+					  <PrivateRoute     exact path='/questions/:id'><QuestionManager/></PrivateRoute>
 					  <PrivateRoute     exact path='/leaderboard'><LeaderBoard/></PrivateRoute>
-					  <PrivateRoute      path='/'><Page404/></PrivateRoute>
+					  <PrivateRoute           path='/'><Page404/></PrivateRoute>
 					</Switch>
 				</div>}
 

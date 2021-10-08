@@ -19,7 +19,7 @@ const UserCard = ({author, question}) => {
 				<p className="one">{question.optionOne.text}</p>
 					<span>OR</span>
 				<p className="two">{question.optionTwo.text}... ?</p>
-				<button className="btn-link"><Link to={`question/${question.id}`}>View</Link></button>
+				<button className="btn-link"><Link to={`questions/${question.id}`}>View</Link></button>
 
 				{/*Formatting date as Tyler has shown in the course*/}
 				<p className="date">{customizeDate(question.timestamp)}</p>
