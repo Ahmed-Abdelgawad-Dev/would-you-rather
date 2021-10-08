@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import {getInitialData} from "../store/actions/index";
 import CreateQuestion from "./CreateQuestion";
 import QuestionManager from "./QuestionManager";
-import PleaseLogin from "./PleaseLogin";
+import Page404 from "./Page404";
 
 
 
@@ -49,9 +49,10 @@ class App extends React.Component {
 					  <PrivateRoute     exact path='/add'><CreateQuestion/></PrivateRoute>
 					  <PrivateRoute     exact path='/question/:id'><QuestionManager/></PrivateRoute>
 					  <PrivateRoute     exact path='/leaderboard'><LeaderBoard/></PrivateRoute>
-					  </Switch>
-				</div>
-            }
+					  <PrivateRoute      path='/'><Page404/></PrivateRoute>
+					</Switch>
+				</div>}
+
           </div>
         </React.Fragment>
     );
