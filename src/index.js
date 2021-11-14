@@ -1,15 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import {BrowserRouter as Router} from 'react-router-dom'
-import { Provider as StoreProvider } from 'react-redux'
-import middleware from '../src/store/middleware'
-import reducer from'./store/reducers'
-import {createStore} from "redux";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider as StoreProvider } from "react-redux";
+import middleware from "../src/store/middleware";
+import reducer from "./store/reducers";
+import { createStore } from "redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-export const store = createStore(reducer, middleware)
+export const store = createStore(reducer, middleware);
 
 ReactDOM.render(
 	<Router>
@@ -17,5 +16,5 @@ ReactDOM.render(
 			<App />
 		</StoreProvider>
 	</Router>,
-  document.getElementById('root')
+	document.getElementById("root")
 );

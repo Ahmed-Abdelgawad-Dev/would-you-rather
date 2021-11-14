@@ -1,50 +1,63 @@
-import React from 'react'
-import {connect} from "react-redux";
-import {Link} from 'react-router-dom'
-import {setAuthedUser} from "../store/actions/authedUser";
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import { setAuthedUser } from "../store/actions/authedUser";
+import PropTypes from "prop-types";
+
+import { LinkContainer } from "react-router-bootstrap";
+import { Container, Navbar as NB, Nav } from "react-bootstrap";
 
 
-const Navbar = ({authedUserName, authedUser, signOut}) => {
-	return(
-		<div className="nav">
-			<ul className="nav-list">
-				<li><Link to='/'>Home</Link></li>
-				<li><Link to='/add'>Create Question</Link></li>
-				<li><Link to='/leaderboard'>Leader Board</Link></li>
-		        {/* Redirect the user to the app functionalities if authed, else to login link */}
-				{authedUser
-		          ? (
-		          	<div>
-		              <li>
-		                <Link to='/login' onClick={() => signOut()}>Sign out:  <span className="connected-user">{authedUserName}</span></Link>
-		              </li>
-		            </div>
-			        )
-		          : (<li>
-		              <Link to='/login' >Login</Link>
-		            </li>)
-		        }
-			</ul>
 
-		</div>
-	)
-}
+const Navbar = ({ authedUserName, authedUser, signOut }) => {
+	return (
+		<>
+		<Container>
+			<NB fixed="top" bg="dark" variant="dark">
+				<LinkContainer to="/">
+					<Nav.Link><span style={{color:"royalblue"}}>Home</span></Nav.Link>
+				</LinkContainer>
+				<Nav>
+					<LinkContainer to="/add">
+						<Nav.Link>Create Question</Nav.Link>
+					</LinkContainer>
+
+					<LinkContainer to="/leaderboard">
+						<Nav.Link>Leader Board</Nav.Link>
+					</LinkContainer>
+
+					<LinkContainer to="/login">
+						{authedUser ? (
+							<Nav.Link onClick={() => signOut()}>
+								Sign out: <span style={{color: "crimson"}}>{authedUserName}</span>
+							</Nav.Link>
+						) : (
+							<Nav.Link>Login</Nav.Link>
+						)}
+					</LinkContainer>
+				</Nav>
+			</NB>
+		</Container><br /><br /><br />
+		</>
+	);
+};
 
 Navbar.propTypes = {
 	signOut: PropTypes.func,
 	users: PropTypes.object,
-	authedUserName: PropTypes.string || null
-}
+	authedUserName: PropTypes.string || null,
+};
 
-const mapStateToProps = ({users, authedUser}) => {
+const mapStateToProps = ({ users, authedUser }) => {
 	return {
-		authedUser, authedUserName: authedUser && users[authedUser] ? users[authedUser].name : null
-	}
-}
+		authedUser,
+		authedUserName:
+			authedUser && users[authedUser] ? users[authedUser].name : null,
+	};
+};
+
 const mapDispatchToProps = (dispatch) => ({
 	// simple dispatching could be implemented here.
-	signOut: () => dispatch(setAuthedUser(null))
-})
+	signOut: () => dispatch(setAuthedUser(null)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
