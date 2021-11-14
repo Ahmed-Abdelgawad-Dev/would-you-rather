@@ -44,6 +44,7 @@ class App extends React.Component {
 		theAuthedUser = this.props.theAuthedUser;
 		return (
 			<>
+			<div className="main-div">
 				<Navbar />
 				<Container fluid className="app">
 					{this.props.questions !== null && (
@@ -71,6 +72,7 @@ class App extends React.Component {
 						</div>
 					)}
 				</Container>
+				</div>
 			</>
 		);
 	}

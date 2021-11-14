@@ -3,6 +3,8 @@ import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {handleAddQuestion} from "../store/actions";
 import PropTypes from 'prop-types'
+import {Badge, Form, Row, Button, Container, Image as Imag} from 'react-bootstrap'
+
 
 // Class component as it brings changeable data
 class CreateQuestion extends Component {
@@ -25,33 +27,39 @@ class CreateQuestion extends Component {
 		}
 
 		return(
-			<div>
-				<h2 className="rather">Would you rather ?</h2>
-				<div>
-					<img src={avatarURL} alt={`user:${authedUserName}`}/>
-					<br/><br/>
-					<form className="form" onSubmit={this.handleSubmit}>
-						<textarea
+			<React.Fragment>
+				<Container>
+				<h2 style={{textAlign: "center"}}><Badge bg="primary">Would you rather ?</Badge></h2><br />
+				<Row>
+					<Imag 
+						className="rounded mx-auto d-block"
+						style={{width: "20rem"}} src={avatarURL} 
+						alt={authedUserName} thumbnail/>
+				</Row>
+				<br />
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Group className="mb-3" controlId="formBasicText">
+						<Form.Label as="h5">First Choice</Form.Label>
+						<Form.Control 
 							onChange={e => this.setState({optionOne: e.target.value})}
-							value={this.state.optionOne}
-							placeholder="Variant One"
-							/>
-						<h3>Or</h3>
-						<textarea
+							value={this.state.optionOne}	
+							type="text" placeholder="Enter Question Number One" />
+					</Form.Group>
+					<h3 style={{color: "red", textAlign: "center"}}>OR</h3>
+					<Form.Group className="mb-3" controlId="formBasicText">
+						<Form.Label as="h5">Second Choice</Form.Label>
+						<Form.Control 
 							onChange={e => this.setState({optionTwo: e.target.value})}
 							value={this.state.optionTwo}
-							placeholder="Variant Two"
-							/>
-						<br/>
-						<button
-							className="submit-btn"
-							type='submit'
-							disabled={this.state.optionOne === '' || this.state.optionOne === ''}>
-							Submit
-						</button>
-					</form>
-				</div>
-			</div>
+							type="text" placeholder="Enter Question Number Two" />
+					</Form.Group>
+					
+					<Button variant="primary" type="submit" className="rounded mx-auto d-block">
+						Submit
+					</Button>
+					</Form>
+				</Container>
+			</React.Fragment>
 		)
 	}
 }
@@ -67,3 +75,7 @@ const mapStateToProps = ({users, authedUser}) => ({
 })
 
 export default connect(mapStateToProps)(CreateQuestion);
+
+
+
+// className="rounded mx-auto d-block" className="justify-content-md-center" className="d-flex space-between"

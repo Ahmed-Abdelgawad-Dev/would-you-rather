@@ -25,35 +25,29 @@ const Login = (props) => {
 	}
 	return (
 		<>
-			<h3><Badge bg="primary">Please click on a user to login: </Badge></h3>
-			<ul>
 				{Object.keys(props.users).map((id) => {
 					const { name, avatarURL } = props.users[id];
 					return (
-						<Container >
-							<Row>
-								<Col>
-								<li key={id}>
-									<hr />
-									<Card style={{ width: '15rem' }}>
+						<Container fluid>
+							<Row className="d-block mx-auto img-fluid w-50">
+								<Col className="rounded mx-auto d-block">
+									<Card key={id} style={{ width: '15rem' }}>
 									<Card.Img 
 										variant="top" src={avatarURL}
 										onClick={() => {handleButtonClick(id);}}
 										alt={name}/>
 									<Card.Body>
-										<Card.Title>{name}</Card.Title>		
+										<Card.Title ><Badge pill bg="light" text="dark">{name}</Badge></Card.Title>
+										<Card.Text>Click on the photo to login.</Card.Text>		
 									</Card.Body>
 									</Card>
-								</li>
+									<br />
 								</Col>
+								
 							</Row>
-
-						
 						</Container>
 					);
 				})}
-			</ul>
-		
 		</>
 	);
 };
