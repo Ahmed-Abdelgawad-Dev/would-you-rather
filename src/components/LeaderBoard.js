@@ -1,40 +1,42 @@
 import React from 'react'
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
-
+import { Container, Badge, Image as Imag, Row } from 'react-bootstrap'
 
 const LeaderBoard = ({ IDs, users }) => {
-  return(
+  return (
     <React.Fragment>
-      <ul>
 
-        {IDs && IDs.map(id => {
+      {IDs && IDs.map(id => {
+        const { answers, avatarURL, questions, name } = users[id]
+        return (
+          <Container key={id}>
+            <Row>
+              <h3 style={{ textAlign: "center" }} > <Badge>{name}</Badge></h3>
+              <Imag
+                className="rounded mx-auto d-block"
+                style={{ width: "20rem" }} src={avatarURL} thumbnail />
+            </Row>
+            <br />
+            <Row style={{ textAlign: "center" }}>
+              <br />
 
-            const {answers, avatarURL, questions, name} = users[id]
+              <h5 style={{ color: "orange" }}>Questions {questions.length}</h5> <br />
+              <h5 style={{ color: "orangered" }}>Answers: {Object.keys(answers).length}</h5>
+              <h2 style={{ color: "red" }}>Score :  <span style={{ color: "darkred" }}>{questions.length + Object.keys(answers).length}</span></h2>
+              
+              <hr />
+            </Row>
+          </Container>
+        );
+      })}
 
-            return (
-              <li key={id}>
-                <h3 className="user-name">{name}</h3>
-                <div>
-                  <img src={avatarURL} alt={`name:${name}`}/>
-                  <div className="qa">
-                      <br/>
-                    <span>Questions {questions.length}</span> <br/>
-                    <span >Answers: {Object.keys(answers).length}</span>
-                  </div>
-                    <h4 className="score">Score :  {questions.length + Object.keys(answers).length}</h4>
-                    <hr/>
-                </div>
-              </li>
-          );
-        })}
-      </ul>
     </React.Fragment>
   )
 }
 
 LeaderBoard.propTypes = {
-    users: PropTypes.object
+  users: PropTypes.object
 }
 
 const mapStateToProps = ({ users }) => ({

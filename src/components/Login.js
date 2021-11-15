@@ -1,4 +1,4 @@
-import React, {fragment} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Redirect, useLocation } from "react-router-dom";
 import { setAuthedUser } from "../store/actions/authedUser";
