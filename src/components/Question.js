@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { handleSaveAnswerOfQuestion } from "../store/actions";
 import PropTypes from 'prop-types';
-import {Image as Imag, Container, Badge} from 'react-bootstrap'
+import {Image as Imag, Container, Badge, Button} from 'react-bootstrap'
 
 // Class component is used for having a state with changeable values.
 class Question extends React.Component {
@@ -38,21 +38,23 @@ class Question extends React.Component {
 						onChange={(e) => this.handleChange(e)}
 						onSubmit={(e) => this.handleSubmit(e)}
 					>
-						<div>
-							<input type='radio' name='theChoice' value='optionOne' />
-							<span>{this.props.question.optionOne.text}</span>
-						</div>
-						<div>
-							<input type='radio' name='theChoice' value='optionTwo' />
-							<span>{this.props.question.optionTwo.text}</span>
-						</div>
+						<Container>
+							<Container>
+								<input type='radio' name='theChoice' value='optionOne' />
+								<span style={{color: "darkblue", fontWeight: "bold"}}>{this.props.question.optionOne.text}</span>
+							</Container>
+							<Container>
+								<input type='radio' name='theChoice' value='optionTwo' />
+								<span style={{color: "darkblue", fontWeight: "bold"}}>{this.props.question.optionTwo.text}</span>
+							</Container>
+						</Container>
 						{this.state.Alert && <h3>Please Choose An Option !</h3>}
 						<input style={{
 							fontWeight: "bold",
 							margin: "10px",
 							padding: "8px",
 							borderRadius: "6px",
-							background: "blue",
+							background: "dodgerblue",
 							color: "white"
 						}}
 							variant="primary" type='submit' value='Submit' />
