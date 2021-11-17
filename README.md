@@ -11,4 +11,4 @@ In the project directory, you can run:
 then you are free to use the app with its functionalities and the SPA nature.
 
 
-Note: This Single Page Application was styled with plain CSS as the focus is on React and redux functionalities together and not on the styling process.
+Note: This Single Page Application was styled with plain CSS & react-bootstrap as the focus is on React and redux functionalities together and not on the styling process.
