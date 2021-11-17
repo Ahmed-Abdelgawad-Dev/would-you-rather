@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { handleSaveAnswerOfQuestion } from "../store/actions";
 import PropTypes from 'prop-types';
-import {Image as Imag, Container, Badge, Button} from 'react-bootstrap'
+import {Image as Imag, Container, Badge} from 'react-bootstrap'
 
 // Class component is used for having a state with changeable values.
 class Question extends React.Component {

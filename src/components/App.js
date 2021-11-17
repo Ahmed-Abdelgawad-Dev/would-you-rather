@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import LeaderBoard from "./LeaderBoard";
-// import '../index.css'
+import '../index.css'
 import QuestionsList from "./QuestionsList";
 import { connect } from "react-redux";
 import { getInitialData } from "../store/actions/index";
