@@ -37,7 +37,7 @@ class CreateQuestion extends Component {
 							alt={authedUserName} thumbnail />
 					</Row>
 					<br />
-					<Form onSubmit={this.handleSubmit}>
+					<Form style={{textAlign: "center" }} onSubmit={this.handleSubmit}>
 						<Form.Group className="mb-3" controlId="formBasicText">
 							<Form.Label as="h5">First Choice</Form.Label>
 							<Form.Control
@@ -53,7 +53,6 @@ class CreateQuestion extends Component {
 								value={this.state.optionTwo}
 								type="text" placeholder="Enter Question Number Two" />
 						</Form.Group>
-
 						<Button variant="primary" type="submit" className="rounded mx-auto d-block">
 							Submit
 						</Button>
