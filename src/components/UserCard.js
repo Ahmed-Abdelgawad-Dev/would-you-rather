@@ -1,30 +1,37 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {customizeDate} from "../core/customizeDate";
+import { connect } from 'react-redux'
+import { customizeDate } from "../core/customizeDate";
 import Proptypes from "prop-types";
+import {Container,Image as Imag,Button,Badge, ListGroup} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap';
 
 
-const UserCard = ({author, question}) => {
+const UserCard = ({ author, question }) => {
 
-	return(
-		<div>
-			<hr/>
-			<h3 className="user-name">{author.name} is asking:  </h3>
-			<div>
-				<img src={author.avatarURL} alt={`${author.name}`}/>
-			</div>
-			<h3>Would You Rather  ?</h3>
-			<div className="wyr">
-				<p className="one">{question.optionOne.text}</p>
-					<span>OR</span>
-				<p className="two">{question.optionTwo.text}... ?</p>
-				<button className="btn-link"><Link to={`questions/${question.id}`}>View</Link></button>
-
-				{/*Formatting date as Tyler has shown in the course*/}
-				<p className="date">{customizeDate(question.timestamp)}</p>
-			</div>
-		</div>
+	return (
+		<Container>
+			<hr />
+			<Container>
+				<h3 style={{textAlign: "center" }}><Badge>{author.name}</Badge> is asking: </h3>
+				<Imag className="rounded mx-auto d-block" 
+					src={author.avatarURL} alt={`${author.name}`}
+					style={{ width: "18rem" }} thumbnail/>
+			</Container>
+			<br />
+			<Container style={{textAlign: "center" }}>
+				<h2 style={{color:"red"}}>Would You Rather  ?</h2> <br />
+				<ListGroup>
+					<ListGroup.Item as="h5" style={{color:"darkblue"}}>{question.optionOne.text} </ListGroup.Item>
+					<br /><h5 style={{color: "darkred" }}>Or</h5>
+					<br />	<ListGroup.Item as="h5" style={{color:"darkblue"}}>{question.optionTwo.text}</ListGroup.Item>
+				</ListGroup> <br />
+				<LinkContainer to={`questions/${question.id}`}>
+					<Button>View</Button>
+				</LinkContainer>
+				<br /> <br />
+				<p style={{fontFamily: 'Shadows Into Light',}}>{customizeDate(question.timestamp)}</p>
+			</Container>
+		</Container>
 	)
 }
 
@@ -35,9 +42,9 @@ UserCard.propTypes = {
 
 }
 
-const mapStateToProps = ({questions, users}, {id}) => {
+const mapStateToProps = ({ questions, users }, { id }) => {
 	const question = questions[id]
-	return {question, author: users[question.author]}
+	return { question, author: users[question.author] }
 }
 
 export default connect(mapStateToProps)(UserCard);

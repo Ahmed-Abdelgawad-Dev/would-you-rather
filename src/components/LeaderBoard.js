@@ -30,7 +30,6 @@ const LeaderBoard = ({ IDs, users }) => {
           </Container>
         );
       })}
-
     </React.Fragment>
   )
 }
